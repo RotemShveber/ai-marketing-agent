@@ -25,6 +25,7 @@ class User(Base):
     last_login = Column(DateTime, nullable=True)
 
     # Relationships
+    customers = relationship("Customer", back_populates="user", cascade="all, delete-orphan")
     products = relationship("Product", back_populates="user", cascade="all, delete-orphan")
     campaigns = relationship("Campaign", back_populates="user", cascade="all, delete-orphan")
     brand_assets = relationship("BrandAssets", back_populates="user", cascade="all, delete-orphan")

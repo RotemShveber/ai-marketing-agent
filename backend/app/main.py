@@ -27,7 +27,7 @@ async def lifespan(app: FastAPI):
 app = FastAPI(
     title=settings.APP_NAME,
     version=settings.APP_VERSION,
-    description="AI-powered marketing automation platform for E N Trade LTD",
+    description="AstralAI - Multi-platform AI marketing automation for multiple customers",
     docs_url="/docs",
     redoc_url="/redoc",
     lifespan=lifespan,

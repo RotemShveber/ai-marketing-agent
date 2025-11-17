@@ -1,7 +1,8 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
+import { loadConfig, isOpenAIConfigured } from "@/lib/config"
 
 export default function GeneratePage() {
   const [productName, setProductName] = useState("")
@@ -11,6 +12,11 @@ export default function GeneratePage() {
   const [platforms, setPlatforms] = useState<string[]>([])
   const [loading, setLoading] = useState(false)
   const [result, setResult] = useState<any>(null)
+  const [isConfigured, setIsConfigured] = useState(false)
+
+  useEffect(() => {
+    setIsConfigured(isOpenAIConfigured())
+  }, [])
 
   const handlePlatformToggle = (platform: string) => {
     if (platforms.includes(platform)) {
@@ -69,6 +75,7 @@ export default function GeneratePage() {
               <Link href="/dashboard" className="text-gray-600 hover:text-gray-900">Dashboard</Link>
               <Link href="/chat" className="text-gray-600 hover:text-gray-900">Chat</Link>
               <Link href="/products" className="text-gray-600 hover:text-gray-900">Products</Link>
+              <Link href="/settings" className="text-gray-600 hover:text-gray-900">Settings</Link>
             </nav>
           </div>
         </div>
@@ -82,6 +89,28 @@ export default function GeneratePage() {
           <p className="text-gray-600 mb-8">
             Tell us about your perfume and we'll create amazing marketing content for all platforms!
           </p>
+
+          {/* API Key Warning */}
+          {!isConfigured && (
+            <div className="bg-yellow-50 border-2 border-yellow-400 rounded-xl p-6 mb-6">
+              <div className="flex items-start gap-4">
+                <div className="text-3xl">⚠️</div>
+                <div className="flex-1">
+                  <h3 className="text-lg font-bold text-yellow-900 mb-2">API Key Required</h3>
+                  <p className="text-yellow-800 mb-4">
+                    You need to configure your OpenAI API key to use the content generation feature.
+                    Without an API key, you'll only see demo content.
+                  </p>
+                  <Link
+                    href="/settings"
+                    className="inline-block px-6 py-3 bg-yellow-600 text-white rounded-lg font-semibold hover:bg-yellow-700 transition-all"
+                  >
+                    Go to Settings →
+                  </Link>
+                </div>
+              </div>
+            </div>
+          )}
 
           <div className="bg-white rounded-xl shadow-lg p-8 mb-8">
             <div className="space-y-6">

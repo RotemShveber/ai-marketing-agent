@@ -10,8 +10,8 @@ class Settings(BaseSettings):
     """Application settings loaded from environment variables"""
 
     # Application
-    APP_NAME: str = "AI Marketing Agent"
-    APP_VERSION: str = "1.0.0"
+    APP_NAME: str = "AstralAI Marketing Platform"
+    APP_VERSION: str = "2.0.0"
     DEBUG: bool = False
     LOG_LEVEL: str = "INFO"
 
@@ -105,8 +105,8 @@ class Settings(BaseSettings):
     # Business Settings
     DEFAULT_LANGUAGE: str = "en"
     SUPPORTED_LANGUAGES: List[str] = ["en", "es", "fr", "de", "it", "pt", "he"]
-    COMPANY_NAME: str = "E N Trade LTD"
-    COMPANY_WEBSITE: str = "https://entradeltd.com"
+    COMPANY_NAME: str = "AstralAI"
+    COMPANY_WEBSITE: str = "https://astralai.com"
 
     class Config:
         env_file = ".env"

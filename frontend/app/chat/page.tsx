@@ -64,6 +64,7 @@ export default function ChatPage() {
               <Link href="/dashboard" className="text-gray-600 hover:text-gray-900">Dashboard</Link>
               <Link href="/generate" className="text-gray-600 hover:text-gray-900">Generate</Link>
               <Link href="/products" className="text-gray-600 hover:text-gray-900">Products</Link>
+              <Link href="/settings" className="text-gray-600 hover:text-gray-900">Settings</Link>
             </nav>
           </div>
         </div>
