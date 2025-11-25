@@ -4,8 +4,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabase/client'
 import { Button } from '@/components/ui/button'
-import Link from 'next/link'
-import { Zap, Mail, Lock, ArrowRight, Sparkles } from 'lucide-react'
+import { Zap, Mail, Lock, ArrowRight } from 'lucide-react'
 
 export default function LoginPage() {
   const router = useRouter()
@@ -136,26 +135,6 @@ export default function LoginPage() {
             </Button>
           </form>
 
-          {/* Divider */}
-          <div className="relative my-6">
-            <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-gray-300"></div>
-            </div>
-            <div className="relative flex justify-center text-sm">
-              <span className="px-2 bg-white text-gray-500">New to MarketAI?</span>
-            </div>
-          </div>
-
-          {/* Sign Up Link */}
-          <div className="text-center">
-            <Link
-              href="/auth/signup"
-              className="inline-flex items-center gap-2 text-indigo-600 hover:text-indigo-700 font-medium transition-colors"
-            >
-              <Sparkles className="w-4 h-4" />
-              Create a free account
-            </Link>
-          </div>
         </div>
 
         {/* Footer */}
