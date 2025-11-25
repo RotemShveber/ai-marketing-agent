@@ -39,3 +39,6 @@ export const supabaseAdmin = createClient(
     },
   }
 )
+
+// Alias for backwards compatibility with existing code
+export { createClientSupabase as createClient }

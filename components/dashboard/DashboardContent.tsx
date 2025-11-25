@@ -6,6 +6,7 @@ import ContentLibrary from './ContentLibrary'
 import ContentGenerator from './ContentGenerator'
 import ScheduleCalendar from './ScheduleCalendar'
 import AIChat from './AIChat'
+import { SettingsContent } from './SettingsContent'
 import { supabase } from '@/lib/supabase/client'
 import { useRouter } from 'next/navigation'
 import {
@@ -16,10 +17,11 @@ import {
   LogOut,
   Menu,
   X,
-  Zap
+  Zap,
+  Settings
 } from 'lucide-react'
 
-type TabType = 'generate' | 'library' | 'schedule' | 'chat'
+type TabType = 'generate' | 'library' | 'schedule' | 'chat' | 'settings'
 
 export default function DashboardContent({ tenantId }: { tenantId: string }) {
   const router = useRouter()
@@ -37,6 +39,7 @@ export default function DashboardContent({ tenantId }: { tenantId: string }) {
     { id: 'chat' as TabType, label: 'AI Chat', icon: MessageSquare, description: 'Chat with AI' },
     { id: 'library' as TabType, label: 'Library', icon: FolderOpen, description: 'View content' },
     { id: 'schedule' as TabType, label: 'Schedule', icon: Calendar, description: 'Plan posts' },
+    { id: 'settings' as TabType, label: 'Settings', icon: Settings, description: 'Manage account' },
   ]
 
   return (
@@ -129,6 +132,7 @@ export default function DashboardContent({ tenantId }: { tenantId: string }) {
               {activeTab === 'chat' && 'Chat with your AI marketing assistant'}
               {activeTab === 'library' && 'Browse and manage your generated content'}
               {activeTab === 'schedule' && 'Plan and schedule your social media posts'}
+              {activeTab === 'settings' && 'Manage your account, team, and integrations'}
             </p>
           </div>
 
@@ -138,6 +142,7 @@ export default function DashboardContent({ tenantId }: { tenantId: string }) {
             {activeTab === 'chat' && <AIChat tenantId={tenantId} />}
             {activeTab === 'library' && <ContentLibrary tenantId={tenantId} />}
             {activeTab === 'schedule' && <ScheduleCalendar tenantId={tenantId} />}
+            {activeTab === 'settings' && <SettingsContent tenantId={tenantId} />}
           </div>
         </div>
       </main>
